@@ -1,0 +1,46 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>J’s & Clavin’s Wedding Invitation</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background: #f9f9f9; }
+    input { padding: 10px; font-size: 16px; margin-top: 20px; }
+    button { padding: 10px 20px; font-size: 16px; }
+    #result { margin-top: 30px; font-size: 18px; }
+  </style>
+</head>
+<body>
+  <h1>J’s & Clavin’s Wedding Invitation</h1>
+  <p>Enter your name to check your invitation:</p>
+  <input type="text" id="guestName" placeholder="Full Name" />
+  <button onclick="checkGuest()">Check</button>
+  <div id="result"></div>
+
+  <script src="guests.js"></script>
+  <script>
+    const resultDiv = document.getElementById('result');
+
+    function checkGuest() {
+      const name = document.getElementById('guestName').value.trim();
+      const guest = guests.find(g => g.name.toLowerCase() === name.toLowerCase());
+      const time = new Date().toLocaleString();
+
+      if (guest) {
+        resultDiv.innerHTML = `Welcome, <strong>${guest.name}</strong>!<br>
+          You are invited. Table: <strong>${guest.table}</strong>, Chair: <strong>${guest.chair}</strong>`;
+      } else {
+        resultDiv.innerHTML = `Sorry, <strong>${name}</strong>. Please ask the wedding organizer for assistance.`;
+      }
+
+      // Log activity
+      const log = { name, invited: !!guest, table: guest?.table || '-', chair: guest?.chair || '-', time };
+      const logs = JSON.parse(localStorage.getItem('guestLogs') || '[]');
+      logs.push(log);
+      localStorage.setItem('guestLogs', JSON.stringify(logs));
+    }
+  </script>
+</body>
+</html>
