@@ -1,7 +1,9 @@
 // guests.js
 const guests = [
-  { name: "Juan Dela Cruz", table: "1", chair: "A" },
-  { name: "Maria Santos", table: "1", chair: "B" },
-  { name: "Pedro Reyes", table: "2", chair: "A" },
-  { name: "Anna Lopez", table: "2", chair: "B" }
+  { name: "Ma.Belen Montebon", table: "1", chair: "A" },
+  { name: "Asterio Montebon Sr", table: "1", chair: "B" },
+  { name: "Asterio Montebon Jr", table: "1", chair: "C" },
+  { name: "Princess Ronamie Otarra", table: "1", chair: "D" }
+  { name: "Ma. Arlene M. Jimenez", table: "1", chair: "E" }
+  { name: "Aimie M. Molejon", table: "2", chair: "A" }
 ];
